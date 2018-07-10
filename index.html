@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Exercice - 2</title>
+</head>
+<body>
+  <form>
+    <label for="note1">Note 1 : </label><input type="text" name="note1" id="note1"/>
+    <label for="note2">Note 2 : </label><input type="text" name="note2" id="note2"/>
+    <label for="note3">Note 3 : </label><input type="text" name="note3" id="note3"/>
+    <label for="note4">Note 4 : </label><input type="text" name="note4" id="note4"/>
+    <label for="note5">Note 5 : </label><input type="text" name="note5" id="note5"/>
+    <button type="button" name="button" id="calcul">Start calcul</button>
+  </form>
+</body>
+<script src="assets/js/jquery-3.2.1.js"></script>
+<script>
+$(function(){
+  // Détecte le clic sur le outon ayant l'id calcul
+  $('#calcul').click(function(){
+    // Somme des notes en utilisant les id correspondants
+    var sum = parseInt($('#note1').val()) + parseInt($('#note2').val()) + parseInt($('#note3').val()) + parseInt($('#note4').val()) + parseInt($('#note5').val());
+    // Le nombre de notes total
+    var noteAmount = 5;
+    // Regex
+    var regex = /^(?:1?\d(?:\.\d{1,2})?|20(?:\.0?0?)?)$/;
+    // Calcul de la moyenne
+    average = sum / noteAmount;
+    // Vérifie que les notes entrées sont biens des nombres entre 0 et 20
+    if ((regex.test($('#note1').val()) == true) && (regex.test($('#note2').val()) == true) && (regex.test($('#note3').val()) == true) && (regex.test($('#note4').val()) == true) && (regex.test($('#note5').val()) == true)) {
+      // Compare si la moyenne est supérieure ou égale à 0 et si elle est supérieure à 10
+      if (average >= 0 && average < 10) {
+        // Affiche la moyenne ainsi que l'appréciaion correspondante
+        console.log('Moyenne : ' + average + '\nAppréciation : En dessous de la moyenne');
+        // Compare si la moyenne est supérieure ou égale à 10 et si elle est inférieure à 13
+      } else if (average >= 10 && average < 13) {
+        // Affiche la moyenne ainsi que l'appréciaion correspondante
+        console.log('Moyenne : ' + average + '\nAppréciation : Moyen');
+        // Compare si la moyenne est supérieure ou égale à 13 et si elle est inférieure à 16
+      } else if (average >= 13 && average < 16) {
+        // Affiche la moyenne ainsi que l'appréciaion correspondante
+        console.log('Moyenne : ' + average + '\nAppréciation : Bien');
+        // Compare si la moyenne est supérieure ou égale à 0 et si elle est inférieure à 20
+      } else if (average >= 16 && average < 20) {
+        // Affiche la moyenne ainsi que l'appréciaion correspondante
+        console.log('Moyenne : ' + average + '\nAppréciation : Très bien');
+      } else {
+        // Affiche la moyenne ainsi que l'appréciaion correspondante
+        console.log('Moyenne : ' + average + '\nAppréciation : Excellent');
+      }
+    } else {
+      // Affiche un message si les inputs ne sont pas des chiffres entre 0 et 20
+      alert('Entrer uniquement des nombres de l\'intervalle [0;20]')
+    }
+  });
+});
+</script>
+</html>
